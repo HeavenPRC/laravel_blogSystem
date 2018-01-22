@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,9 +48,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:10',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'captcha' => 'required|captcha'
+        ],[
+            'name.max' => '用户名不能超过10个字符',
+            'password.min' => '密码最少为6位',
+            'password.confirmed' => '两次密码不一致',
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '请输入正确的验证码'
         ]);
     }
 
