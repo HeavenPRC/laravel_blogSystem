@@ -14,10 +14,19 @@
 
         <div class="panel-body">
 
-            <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+            <form enctype="multipart/form-data" action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+                {{ method_field('PATCH') }}
+                {{ csrf_field() }}
+                {{-- <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+                <div class="form-group">
+                    <label for="" class="avatar-label">用户头像</label>
+                    @if($user->avatar)
+                        <br>
+                        <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                    @endif
+                    <input type="file" name="avatar">
+                </div>
                 <div class="form-group">
                     <label for="name-field">用户名</label>
                     <input class="form-control" type="text" name="name" id="name-field" value="{{ old('name', $user->name ) }}" />
