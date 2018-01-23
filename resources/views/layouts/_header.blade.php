@@ -39,6 +39,13 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
+                            <li>
+                                <a href="{{ route('users.edit', Auth::id()) }}">
+                                    编辑资料
+                                </a>
+                            </li>
+
                             <li>
                                 <a href="{{ route('logout') }}"
                                 {{-- 1.阻止a链接的默认行为;2.提交表单; --}}
