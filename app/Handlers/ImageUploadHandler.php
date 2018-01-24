@@ -7,9 +7,23 @@ use Image;
 class ImageUploadHandler
 {
     protected $allowed_ext = ["png", "jpg", "gif", 'jpeg'];
-
-    public function save($file, $folder, $file_prefix, $max_width = false)
+    /**
+     * 上传图片
+     * @param  [type]  $file        [description]
+     * @param  [type]  $folder      [description]
+     * @param  [type]  $file_prefix [description]
+     * @param  [type]  $maxF        [description]
+     * @param  boolean $max_width   [description]
+     * @return [type]               [description]
+     */
+    public function save($file, $folder, $file_prefix, $maxF,$max_width = false)
     {
+        //限制传输文件大小
+        if ($file->getClientSize()>$maxF) {
+            session()->flash('info', '请上传小于1M的图片');
+            return false;
+        }
+
         // 构建存储的文件夹规则，值如：uploads/images/avatars/201709/21/
         // 文件夹切割能让查找效率更高。
         $folder_name = "uploads/images/$folder/" . date("Ym", time()) . '/'.date("d", time()).'/';
@@ -48,17 +62,17 @@ class ImageUploadHandler
     public function reduceSize($file_path, $max_width)
     {
         // 先实例化，传参是文件的磁盘物理路径
-        $image = Image::make($file_path);
+        $image = Image::make($file_path)->resize($max_width, $max_width);
 
         // 进行大小调整的操作
-        $image->resize($max_width, null, function ($constraint) {
+		/*$image->resize($max_width, null, function ($constraint) {
 
             // 设定宽度是 $max_width，高度等比例双方缩放
             $constraint->aspectRatio();
 
             // 防止裁图时图片尺寸变大
             $constraint->upsize();
-        });
+        });*/
 
         // 对图片修改后进行保存
         $image->save();
