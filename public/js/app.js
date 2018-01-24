@@ -1052,6 +1052,7 @@ if (token) {
 //     cluster: 'mt1',
 //     encrypted: true
 // });
+//window._ = require('cropper');
 
 /***/ }),
 /* 12 */
