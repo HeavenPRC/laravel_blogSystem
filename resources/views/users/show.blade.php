@@ -43,7 +43,7 @@
                     <li class="active"><a href="#">Ta 的话题</a></li>
                     <li><a href="#">Ta 的回复</a></li>
                 </ul>
-                {{-- 此处是根据模型关联查出数据 --}}
+                {{-- 此处是根据模型关联查出数据 调用模型方法 --}}
                 @include('users._topics', ['topics' => $user->topics()->recent()->paginate(10)])
             </div>
         </div>
