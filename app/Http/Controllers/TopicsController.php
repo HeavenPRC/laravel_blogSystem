@@ -6,6 +6,8 @@ use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
+use App\Models\Category;
+use Auth;
 
 class TopicsController extends Controller
 {
@@ -14,11 +16,11 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request, Topic $topic)
 	{
 		//通过预加载解决N+1问题
 		//每次遍历一次查一次类别表，查一次用户表最终执行2N+1条语句
-		$topics = Topic::with('user', 'category')->paginate();
+		$topics = $topic->withOrder($request->order)->with('user', 'category')->paginate();
 		return view('topics.index', compact('topics'));
 	}
 
@@ -29,13 +31,18 @@ class TopicsController extends Controller
 
 	public function create(Topic $topic)
 	{
-		return view('topics.create_and_edit', compact('topic'));
+		$categories =Category::all();
+		return view('topics.create_and_edit', compact('topic', 'categories'));
 	}
-
-	public function store(TopicRequest $request)
+	//TopicRequest自定义表单验证规则
+	public function store(TopicRequest $request, Topic $topic)
 	{
-		$topic = Topic::create($request->all());
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Created successfully.');
+		//$topic = Topic::create($request->all());
+		$topic->fill($request->all());
+		$topic->user_id = Auth::id();
+		$topic->save();
+
+		return redirect()->route('topics.show', $topic->id)->with('success', 'Created successfully.');
 	}
 
 	public function edit(Topic $topic)
@@ -57,6 +64,6 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('topics.index')->with('message', '创建成功');
 	}
 }

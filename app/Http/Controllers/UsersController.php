@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\models\User;
+use App\models\Topic;
 use App\Handlers\ImageUploadHandler;
 use Auth;
 
