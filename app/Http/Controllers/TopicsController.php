@@ -14,11 +14,11 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request, Topic $topic)
 	{
 		//通过预加载解决N+1问题
 		//每次遍历一次查一次类别表，查一次用户表最终执行2N+1条语句
-		$topics = Topic::with('user', 'category')->paginate();
+		$topics = $topic->withOrder($request->order)->with('user', 'category')->paginate();
 		return view('topics.index', compact('topics'));
 	}
 
