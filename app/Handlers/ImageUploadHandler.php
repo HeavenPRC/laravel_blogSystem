@@ -9,14 +9,14 @@ class ImageUploadHandler
     protected $allowed_ext = ["png", "jpg", "gif", 'jpeg'];
     /**
      * 上传图片
-     * @param  [type]  $file        [description]
-     * @param  [type]  $folder      [description]
-     * @param  [type]  $file_prefix [description]
-     * @param  [type]  $maxF        [description]
-     * @param  boolean $max_width   [description]
-     * @return [type]               [description]
+     * @param  [type]  $file        文件资源
+     * @param  [type]  $folder      文件夹
+     * @param  [type]  $file_prefix 用户id
+     * @param  [type]  $maxF        限制上传文件大小
+     * @param  boolean $max_width   规格
+     * @return [type]               true false
      */
-    public function save($file, $folder, $file_prefix, $maxF,$max_width = false)
+    public function save($file, $folder, $file_prefix, $maxF,$max_width = false, $roc = false)
     {
         //限制传输文件大小
         if ($file->getClientSize()>$maxF) {
@@ -51,7 +51,7 @@ class ImageUploadHandler
         if ($max_width && $extension != 'gif') {
 
             // 此类中封装的函数，用于裁剪图片
-            $this->reduceSize($upload_path . '/' . $filename, $max_width);
+            $this->reduceSize($upload_path . '/' . $filename, $max_width, $roc);
         }
 
         return [
@@ -59,21 +59,22 @@ class ImageUploadHandler
         ];
     }
 
-    public function reduceSize($file_path, $max_width)
+    public function reduceSize($file_path, $max_width, $roc = false)
     {
-        // 先实例化，传参是文件的磁盘物理路径
-        $image = Image::make($file_path)->resize($max_width, $max_width);
+        if (!$roc) {
+            // 先实例化，传参是文件的磁盘物理路径
+            $image = Image::make($file_path)->resize($max_width, $max_width);
+        } else {
+            // 进行大小调整的操作
+    		$image = Image::make($file_path)->resize($max_width, null, function ($constraint) {
 
-        // 进行大小调整的操作
-		/*$image->resize($max_width, null, function ($constraint) {
+                // 设定宽度是 $max_width，高度等比例双方缩放
+                $constraint->aspectRatio();
 
-            // 设定宽度是 $max_width，高度等比例双方缩放
-            $constraint->aspectRatio();
-
-            // 防止裁图时图片尺寸变大
-            $constraint->upsize();
-        });*/
-
+                // 防止裁图时图片尺寸变大
+                $constraint->upsize();
+            });
+        }
         // 对图片修改后进行保存
         $image->save();
     }
