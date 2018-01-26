@@ -22,3 +22,6 @@ Route::resource('users', 'UsersController',['only' => ['show', 'update', 'edit']
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
+
+//富文本编辑器上传图片路由
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');

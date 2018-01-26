@@ -8,7 +8,10 @@
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>@yield('title','欢迎~！')-IT博客社区</title>
+	<meta name="description" content="@yield('description', 'IT博客社区')" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+	@yield('styles')
+
 </head>
 <body>
 	<div id="app" class="{{ route_class() }}-page">
@@ -25,5 +28,7 @@
 	</div>
 	{{-- 引入js文件 --}}
 	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+	@yield('scripts')
+
 </body>
 </html>
