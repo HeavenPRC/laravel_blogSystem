@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Reply extends Model
 {
-    protected $fillable = ['user_id'];
+    protected $fillable = ['content'];
 
     public function topic()
     {
