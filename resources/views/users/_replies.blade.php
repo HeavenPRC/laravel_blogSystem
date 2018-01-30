@@ -3,7 +3,7 @@
 <ul class="list-group">
     @foreach ($replies as $reply)
         <li class="list-group-item">
-            <a href="{{-- {{ $reply->topic->link(['#reply' . $reply->id]) }} --}}{{ url("/topics/{$reply->topic->id}") }}">
+            <a href="{{-- {{ $reply->topic->link(['#reply' . $reply->id]) }} --}}{{ url("/topics/{$reply->topic->id}") }}#reply{{  $reply->id }}">
                 {{ $reply->topic->title }}
             </a>
 
