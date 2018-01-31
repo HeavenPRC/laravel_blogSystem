@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-
+    use HasRoles;
     use Notifiable {
         notify as protected laravelNotify;
     }
@@ -56,5 +57,10 @@ class User extends Authenticatable
         $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications->markAsRead();
+    }
+    //判断当前用户是不是对象的拥有者
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
     }
 }
