@@ -26,6 +26,9 @@
 
 		@include('layouts._footer')
 	</div>
+	@if (app()->isLocal())
+        @include('sudosu::user-selector')
+    @endif
 	{{-- 引入js文件 --}}
 	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	@yield('scripts')
