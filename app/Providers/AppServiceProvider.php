@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Reply::observe(ReplyObserver::class);
         Topic::observe(TopicObserver::class);
-
+        \App\Models\Link::observe(\App\Observers\LinkObserver::class);
         \Horizon::auth(function ($request) {
             // 是否是站长
             return \Auth::user()->hasRole('Founder');
