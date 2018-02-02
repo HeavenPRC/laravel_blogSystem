@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\Link;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 
@@ -17,12 +19,16 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request, Topic $topic)
+	public function index(Request $request, Topic $topic, User $user, Link $link)
 	{
 		//通过预加载解决N+1问题
 		//每次遍历一次查一次类别表，查一次用户表最终执行2N+1条语句
 		$topics = $topic->withOrder($request->order)->with('user', 'category')->paginate();
-		return view('topics.index', compact('topics'));
+		$active_users = $user->getActiveUsers();
+		$links = $link->getAllCached();
+		//dd($links);
+        //dd($active_users);
+		return view('topics.index', compact('topics', 'active_users', 'links'));
 	}
 
     public function show(Topic $topic)

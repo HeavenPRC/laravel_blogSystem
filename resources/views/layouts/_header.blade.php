@@ -13,7 +13,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                LaraBBS
+                ZjBLOG
             </a>
         </div>
 

@@ -7,8 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>@yield('title','欢迎~！')-IT博客社区</title>
-	<meta name="description" content="@yield('description', 'IT博客社区')" />
+	<title>@yield('title', 'ZjBLOG') - {{ setting('site_name', 'Laravel 社区') }}</title>
+    <meta name="description" content="@yield('description', setting('seo_description', 'IT 爱好者社区。'))" />
+    <meta name="keyword" content="@yield('keyword', setting('seo_keyword', '博客,社区,论坛,开发者论坛'))" />
+
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	@yield('styles')
 
