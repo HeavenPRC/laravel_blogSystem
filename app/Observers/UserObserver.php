@@ -6,12 +6,12 @@ use App\Models\User;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
-
+//也可以在模型中监听
 class UserObserver
 {
     public function creating(User $user)
     {
-        //
+        $user->activation_token = str_random(30);
     }
 
     public function updating(User $user)

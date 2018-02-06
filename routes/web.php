@@ -31,3 +31,5 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+//激活路由
+Route::get('signup/confirm/{token}', 'Auth\RegisterController@confirmEmail')->name('confirm_email');
