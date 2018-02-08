@@ -6,14 +6,6 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    /**
-     * 处理显示主页
-     * @return [type] [description]
-     */
-    public function root()
-    {
-    	return view('pages.root');
-    }
 
     public function permissionDenied()
     {
@@ -22,8 +14,7 @@ class PagesController extends Controller
             return redirect(url(config('administrator.uri')), 302);
         }
 
-        $navs = $this->navs;
         // 否则使用视图
-        return view('pages.permission_denied', 'navs');
+        return view('pages.permission_denied');
     }
 }
