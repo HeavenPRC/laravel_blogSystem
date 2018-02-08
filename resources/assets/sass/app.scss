@@ -49,7 +49,7 @@ body {
     bottom: 0;
     width: 100% ;
     /* Set the fixed height of the footer here */
-    height: 60px;
+    height: 80px;
     background-color: #404040;
 
     .container {
@@ -57,7 +57,7 @@ body {
         padding-left: 15px;
 
         p {
-            margin: 19px 0;
+            margin: 19px 0px 5px 0px;
             color: #c1c1c1;
 
             a {
@@ -115,7 +115,7 @@ body {
     }
 }
 /* Topic Index Page */
-.topics-index-page, .categories-show-page .root-page{
+.topics-index-page, .categories-show-page, .root-page{
     .topic-list {
         .nav > li > a {
             position: relative;
@@ -124,13 +124,13 @@ body {
             font-size: 0.9em;
         }
         a {
-            color: #444444;
+
         }
         .meta {
             font-size:0.9em;
             color: #b3b3b3;
             a {
-               color: #b3b3b3;
+               color: #3097D1
             }
         }
         .badge {
