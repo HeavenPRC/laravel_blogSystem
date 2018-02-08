@@ -8356,6 +8356,10 @@ body {
   font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
 }
 
+#app {
+  margin-bottom: 120px;
+}
+
 /* header */
 
 .navbar-static-top {

@@ -21,7 +21,9 @@ class PagesController extends Controller
         if (config('administrator.permission')()) {
             return redirect(url(config('administrator.uri')), 302);
         }
+
+        $navs = $this->navs;
         // 否则使用视图
-        return view('pages.permission_denied');
+        return view('pages.permission_denied', 'navs');
     }
 }

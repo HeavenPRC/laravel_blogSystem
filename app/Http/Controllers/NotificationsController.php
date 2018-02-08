@@ -9,6 +9,7 @@ class NotificationsController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
     	$this->middleware('auth');
     }
 
@@ -19,6 +20,9 @@ class NotificationsController extends Controller
 
     	// 标记为已读，未读数量清零
         Auth::user()->markAsRead();
-    	return view('notifications.index', compact('notifications'));
+
+        $navs = $this->navs;
+
+    	return view('notifications.index', compact('notifications', 'navs'));
     }
 }

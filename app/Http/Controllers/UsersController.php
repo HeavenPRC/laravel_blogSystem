@@ -13,13 +13,15 @@ class UsersController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
         //auth 中间件限制游客行为
         $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function show(User $user)
     {
-    	return view('users.show', compact('user'));
+        $navs = $this->navs;
+    	return view('users.show', compact('user', 'navs'));
     }
 
     public function edit(User $user)
@@ -28,8 +30,8 @@ class UsersController extends Controller
         {
             return redirect()->route('users.edit', [Auth::user()]);
         }
-
-        return view('users.edit', compact('user'));
+        $navs = $this->navs;
+        return view('users.edit', compact('user', 'navs'));
     }
 
     public function update(UserRequest $request, User $user,  ImageUploadHandler $uploader)

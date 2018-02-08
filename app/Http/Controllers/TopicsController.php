@@ -16,6 +16,7 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
+    	parent::__construct();
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
@@ -27,20 +28,25 @@ class TopicsController extends Controller
 						->paginate();
 		$active_users = $user->getActiveUsers();
 		$links = $link->getAllCached();
+		//dde($this->navs);
 		//dd($links);
         //dd($active_users);
-		return view('topics.index', compact('topics', 'active_users', 'links'));
+        $navs = $this->navs;
+		return view('topics.index', compact('topics', 'active_users', 'links', 'navs'));
 	}
 
     public function show(Topic $topic)
     {
-        return view('topics.show', compact('topic'));
+    	$navs = $this->navs;
+        return view('topics.show', compact('topic', 'navs'));
     }
 
 	public function create(Topic $topic)
 	{
 		$categories =Category::all();
-		return view('topics.create_and_edit', compact('topic', 'categories'));
+
+		$navs = $this->navs;
+		return view('topics.create_and_edit', compact('topic', 'categories', 'navs'));
 	}
 	//TopicRequest自定义表单验证规则
 	public function store(TopicRequest $request, Topic $topic)
@@ -57,7 +63,9 @@ class TopicsController extends Controller
 	{
         $this->authorize('update', $topic);
         $categories =Category::all();
-		return view('topics.create_and_edit', compact('topic', 'categories'));
+        $navs = $this->navs;
+
+		return view('topics.create_and_edit', compact('topic', 'categories', 'navs'));
 	}
 
 	public function update(TopicRequest $request, Topic $topic)
