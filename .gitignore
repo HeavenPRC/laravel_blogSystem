@@ -4,6 +4,7 @@
 /storage/*.key
 /.idea
 /.vagrant
+/vendor/composer
 npm-debug.log
 yarn-error.log
 .env
