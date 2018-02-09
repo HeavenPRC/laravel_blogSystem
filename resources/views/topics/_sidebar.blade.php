@@ -1,3 +1,12 @@
+
+<div class="panel panel-default">
+    <div class="panel-body active-users">
+         <div class="text-center">广而告之</div>
+            <hr>
+        {{ setting('temporary_notice', '欢迎来到PHPblog！') }}
+    </div>
+</div>
+
 <div class="panel panel-default">
     <div class="panel-body">
         <a href="{{ route('topics.create') }}" class="btn btn-success btn-block" aria-label="Left Align">
