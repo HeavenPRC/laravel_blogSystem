@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Boostag' => $baseDir . '/app/Boostag.php',
     'App\\Console\\Commands\\CalculateActiveUser' => $baseDir . '/app/Console/Commands/CalculateActiveUser.php',
     'App\\Console\\Commands\\SyncUserActivedAt' => $baseDir . '/app/Console/Commands/SyncUserActivedAt.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -37,7 +38,9 @@ return array(
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Link' => $baseDir . '/app/Models/Link.php',
     'App\\Models\\Model' => $baseDir . '/app/Models/Model.php',
+    'App\\Models\\Notice' => $baseDir . '/app/Models/Notice.php',
     'App\\Models\\Reply' => $baseDir . '/app/Models/Reply.php',
+    'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',
     'App\\Models\\Topic' => $baseDir . '/app/Models/Topic.php',
     'App\\Models\\Traits\\ActiveUserHelper' => $baseDir . '/app/Models/Traits/ActiveUserHelper.php',
     'App\\Models\\Traits\\LastActivedAtHelper' => $baseDir . '/app/Models/Traits/LastActivedAtHelper.php',

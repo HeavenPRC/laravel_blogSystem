@@ -21,12 +21,12 @@
                     <li style="float: right;width: 42%">
                     <form action="" method="get" accept-charset="UTF-8">
                         <select  class="form-control zj_select zj_sel" >
-                            <option>1</option>
+                            <option value="non">一级标签</option>
                             <option>2</option>
                         </select>
 
                         <select class="form-control zj_select zj_sel">
-                            <option>1</option>
+                            <option>二级标签</option>
                             <option>2</option>
                         </select>
 
