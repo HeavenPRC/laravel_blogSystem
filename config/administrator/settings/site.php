@@ -37,6 +37,11 @@ return [
             'type' => 'textarea',
             'limit' => 250,
         ],
+        'temporary_notice' => [
+            'title' => '临时公告',
+            'type' => 'textarea',
+            'limit' => 70
+        ]
     ],
 
     // 表单验证规则

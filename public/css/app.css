@@ -8504,6 +8504,21 @@ body {
   border-top: 1px solid #dcebf5;
 }
 
+.topics-index-page .zj_select,
+.categories-show-page .zj_select,
+.root-page .zj_select {
+  height: 31px;
+  font-size: 0.9em;
+}
+
+.topics-index-page .zj_sel,
+.categories-show-page .zj_sel,
+.root-page .zj_sel {
+  float: left;
+  width: 35%;
+  margin-right: 15px;
+}
+
 /* Topic Show Page */
 
 .simditor-body,

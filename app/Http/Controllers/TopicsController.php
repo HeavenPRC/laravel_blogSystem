@@ -11,7 +11,6 @@ use App\Models\User;
 use App\Models\Link;
 use Auth;
 use App\Handlers\ImageUploadHandler;
-use App\Models\Notice;
 
 class TopicsController extends Controller
 {
@@ -29,9 +28,6 @@ class TopicsController extends Controller
 						->paginate();
 		$active_users = $user->getActiveUsers();
 		$links = $link->getAllCached();
-		//dde($this->navs);
-		//dd($links);
-        //dd($active_users);
         $navs = $this->navs;
 		return view('topics.index', compact('topics', 'active_users', 'links', 'navs'));
 	}
