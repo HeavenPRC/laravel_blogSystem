@@ -429,6 +429,7 @@ class ComposerStaticInit0cda487c4a9463726ea488ff64607d78
     );
 
     public static $classMap = array (
+        'App\\Boostag' => __DIR__ . '/../..' . '/app/Boostag.php',
         'App\\Console\\Commands\\CalculateActiveUser' => __DIR__ . '/../..' . '/app/Console/Commands/CalculateActiveUser.php',
         'App\\Console\\Commands\\SyncUserActivedAt' => __DIR__ . '/../..' . '/app/Console/Commands/SyncUserActivedAt.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -460,7 +461,9 @@ class ComposerStaticInit0cda487c4a9463726ea488ff64607d78
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Link' => __DIR__ . '/../..' . '/app/Models/Link.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',
+        'App\\Models\\Notice' => __DIR__ . '/../..' . '/app/Models/Notice.php',
         'App\\Models\\Reply' => __DIR__ . '/../..' . '/app/Models/Reply.php',
+        'App\\Models\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag.php',
         'App\\Models\\Topic' => __DIR__ . '/../..' . '/app/Models/Topic.php',
         'App\\Models\\Traits\\ActiveUserHelper' => __DIR__ . '/../..' . '/app/Models/Traits/ActiveUserHelper.php',
         'App\\Models\\Traits\\LastActivedAtHelper' => __DIR__ . '/../..' . '/app/Models/Traits/LastActivedAtHelper.php',

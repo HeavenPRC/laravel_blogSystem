@@ -47,6 +47,10 @@ return array(
             'topics',
             'replies',
         ],
+        '标签管理' => [
+            'boostags',
+            'tags'
+        ],
         '站点管理' => [
             'settings.site',
             'links'
