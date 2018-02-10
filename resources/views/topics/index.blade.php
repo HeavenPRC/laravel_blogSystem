@@ -20,13 +20,15 @@
                     <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">最新发布</a></li>
                     <li style="float: right;width: 42%">
                     <form action="" method="get" accept-charset="UTF-8">
-                        <select  class="form-control zj_select zj_sel" >
-                            <option value="non">一级标签</option>
-                            <option>2</option>
+                        <select id="tag" class="form-control zj_select zj_sel" >
+                            <option value="non" disabled selected>请选择一级标签</option>
+                            @foreach($boostags as $boostag)
+                                <option value="{{ $boostag->id }}">{{ $boostag->name }}</option>
+                            @endforeach
                         </select>
 
-                        <select class="form-control zj_select zj_sel">
-                            <option>二级标签</option>
+                        <select class="form-control zj_select zj_sel" >
+                            <option>请选择二级标签</option>
                             <option>2</option>
                         </select>
 
@@ -54,4 +56,8 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/topics.js') }}"></script>
 @endsection
