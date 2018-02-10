@@ -5,6 +5,8 @@ use App\Models\Topic;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Link;
+use App\Models\Boostag;
+
 class CategoriesController extends Controller
 {
     public function show(Category $category, Request $request, Topic $topic, User $user, Link $link)
@@ -19,7 +21,9 @@ class CategoriesController extends Controller
         $links = $link->getAllCached();
 
         $navs = $this->navs;
+
+        $boostags = Boostag::all();
         // 传参变量到模板中
-        return view('topics.index', compact('topics', 'category', 'active_users', 'links', 'navs'));
+        return view('topics.index', compact('topics', 'category', 'active_users', 'links', 'navs', 'boostags'));
     }
 }

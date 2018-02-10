@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Link;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+use App\Models\Boostag;
 
 class TopicsController extends Controller
 {
@@ -29,7 +30,8 @@ class TopicsController extends Controller
 		$active_users = $user->getActiveUsers();
 		$links = $link->getAllCached();
         $navs = $this->navs;
-		return view('topics.index', compact('topics', 'active_users', 'links', 'navs'));
+        $boostags = Boostag::all();
+		return view('topics.index', compact('topics', 'active_users', 'links', 'navs', 'boostags'));
 	}
 
     public function show(Topic $topic)
