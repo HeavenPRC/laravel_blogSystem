@@ -47,6 +47,21 @@
                     </div>
 
                     <div class="form-group">
+                        <select id="tag" class="form-control zj_select zj_sel" name='boostag_id'>
+                            <option value="non" disabled selected>请选择一级标签</option>
+                            @foreach($boostags as $boostag)
+                                <option value="{{ $boostag->id }}">{{ $boostag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <select  id="tag2"  class="form-control zj_select zj_sel" style="display: none" name='tag_id'>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <textarea name="body" class="form-control" id="editor" rows="3" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $topic->body ) }}</textarea>
                     </div>
 
@@ -66,6 +81,7 @@
     <script type="text/javascript"  src="{{ asset('js/hotkeys.js') }}"></script>
     <script type="text/javascript"  src="{{ asset('js/uploader.js') }}"></script>
     <script type="text/javascript"  src="{{ asset('js/simditor.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('js/topics.js') }}"></script>
 
     <script>
     $(document).ready(function(){
@@ -81,6 +97,7 @@
             pasteImage: true,
         });
     });
+    var url = '{{ route('getTags') }}';
     </script>
 
 @stop

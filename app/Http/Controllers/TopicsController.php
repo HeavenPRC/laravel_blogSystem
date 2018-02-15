@@ -25,12 +25,24 @@ class TopicsController extends Controller
 	{
 		//通过预加载解决N+1问题
 		//每次遍历一次查一次类别表，查一次用户表最终执行2N+1条语句
-		$topics = $topic->withOrder($request->order)
-						->paginate();
+
+		$topics = $topic->withOrder($request->order);
+
+		if (isset($request->boostag_id)&&!empty($request->boostag_id)) {
+			$topics = $topics->where('boostag_id', $request->boostag_id);
+		}
+
+		if (isset($request->tag_id)&&!empty($request->tag_id)) {
+			$topics = $topics->where('tag_id', $request->tag_id);
+		}
+		$topics = $topics->paginate();
+/*		dde($topics);
+		exit;*/
 		$active_users = $user->getActiveUsers();
 		$links = $link->getAllCached();
         $navs = $this->navs;
-        $boostags = Boostag::all();
+        $boostags = $this->boostags;
+        //dde($topics);
 		return view('topics.index', compact('topics', 'active_users', 'links', 'navs', 'boostags'));
 	}
 
@@ -45,7 +57,8 @@ class TopicsController extends Controller
 		$categories =Category::all();
 
 		$navs = $this->navs;
-		return view('topics.create_and_edit', compact('topic', 'categories', 'navs'));
+		$boostags = $this->boostags;
+		return view('topics.create_and_edit', compact('topic', 'categories', 'navs', 'boostags'));
 	}
 	//TopicRequest自定义表单验证规则
 	public function store(TopicRequest $request, Topic $topic)
@@ -63,8 +76,8 @@ class TopicsController extends Controller
         $this->authorize('update', $topic);
         $categories =Category::all();
         $navs = $this->navs;
-
-		return view('topics.create_and_edit', compact('topic', 'categories', 'navs'));
+        $boostags = $this->boostags;
+		return view('topics.create_and_edit', compact('topic', 'categories', 'navs', 'boostags'));
 	}
 
 	public function update(TopicRequest $request, Topic $topic)

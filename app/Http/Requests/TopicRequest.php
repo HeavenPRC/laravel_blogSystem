@@ -23,6 +23,7 @@ class TopicRequest extends Request
                     'title'       => 'required|min:2',
                     'body'        => 'required|min:3',
                     'category_id' => 'required|numeric',
+                    'boostag_id'  => 'required|numeric'
                 ];
             }
             case 'GET':

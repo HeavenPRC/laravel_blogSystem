@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Boostag' => $baseDir . '/app/Boostag.php',
     'App\\Console\\Commands\\CalculateActiveUser' => $baseDir . '/app/Console/Commands/CalculateActiveUser.php',
     'App\\Console\\Commands\\SyncUserActivedAt' => $baseDir . '/app/Console/Commands/SyncUserActivedAt.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -16,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+    'App\\Http\\Controllers\\BoostagsController' => $baseDir . '/app/Http/Controllers/BoostagsController.php',
     'App\\Http\\Controllers\\CategoriesController' => $baseDir . '/app/Http/Controllers/CategoriesController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\NotificationsController' => $baseDir . '/app/Http/Controllers/NotificationsController.php',
@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Requests\\TopicRequest' => $baseDir . '/app/Http/Requests/TopicRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Jobs\\TranslateSlug' => $baseDir . '/app/Jobs/TranslateSlug.php',
+    'App\\Models\\Boostag' => $baseDir . '/app/Models/Boostag.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Link' => $baseDir . '/app/Models/Link.php',
     'App\\Models\\Model' => $baseDir . '/app/Models/Model.php',

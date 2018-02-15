@@ -429,7 +429,6 @@ class ComposerStaticInit0cda487c4a9463726ea488ff64607d78
     );
 
     public static $classMap = array (
-        'App\\Boostag' => __DIR__ . '/../..' . '/app/Boostag.php',
         'App\\Console\\Commands\\CalculateActiveUser' => __DIR__ . '/../..' . '/app/Console/Commands/CalculateActiveUser.php',
         'App\\Console\\Commands\\SyncUserActivedAt' => __DIR__ . '/../..' . '/app/Console/Commands/SyncUserActivedAt.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -439,6 +438,7 @@ class ComposerStaticInit0cda487c4a9463726ea488ff64607d78
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\BoostagsController' => __DIR__ . '/../..' . '/app/Http/Controllers/BoostagsController.php',
         'App\\Http\\Controllers\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\NotificationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotificationsController.php',
@@ -458,6 +458,7 @@ class ComposerStaticInit0cda487c4a9463726ea488ff64607d78
         'App\\Http\\Requests\\TopicRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TopicRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Jobs\\TranslateSlug' => __DIR__ . '/../..' . '/app/Jobs/TranslateSlug.php',
+        'App\\Models\\Boostag' => __DIR__ . '/../..' . '/app/Models/Boostag.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Link' => __DIR__ . '/../..' . '/app/Models/Link.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',

@@ -8514,7 +8514,7 @@ body {
 .topics-index-page .zj_sel,
 .categories-show-page .zj_sel,
 .root-page .zj_sel {
-  float: left;
+  float: right;
   width: 35%;
   margin-right: 15px;
 }
