@@ -34,4 +34,6 @@ Route::get('permission-denied', 'PagesController@permissionDenied')->name('permi
 //激活路由
 Route::get('signup/confirm/{token}', 'Auth\RegisterController@confirmEmail')->name('confirm_email');
 //获取二级tag
-Route::get('boostags/{boostags}', 'BoostagsController@getTags');
+Route::get('boostags', 'BoostagsController@getTags')->name('getTags');
+//通过标签筛选内容
+Route::post('boostags', 'BoostagsController@show')->name('getContents');

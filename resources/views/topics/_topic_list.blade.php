@@ -26,6 +26,14 @@
                             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                              {{ $topic->category->name }}
                         </a>
+                        @if(!empty($topic->boostag))
+                        <span> • </span>
+                        <a href=" {{ route('root') }}?boostag_id={{ $topic->boostag['id'] }} ">{{ $topic->boostag['name']}}</a>
+                            @if(!empty($topic->tag))
+                            <span> / </span>
+                            <a href="{{ route('root') }}?tag_id={{ $topic->tag['id'] }}">{{ $topic->tag['name']}}</a>
+                            @endif
+                        @endif
 
                         <span> • </span>
                         <a href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}">

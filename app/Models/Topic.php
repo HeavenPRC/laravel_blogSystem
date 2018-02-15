@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
-    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug', 'boostag_id', 'tag_id'];
 
     public function category()
     {
@@ -31,7 +31,7 @@ class Topic extends Model
                 break;
     	}
             // 预加载防止 N+1 问题
-        return $query->with('user', 'category');
+        return $query->with('user', 'category', 'boostag', 'tag');
     }
 
     public function scopeRecentReplied($query)
@@ -50,5 +50,15 @@ class Topic extends Model
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function boostag()
+    {
+        return $this->belongsTo(Boostag::class);
+    }
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
     }
 }
