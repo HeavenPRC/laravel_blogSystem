@@ -23,7 +23,7 @@ $(document).ready(function(){
 
                      if (data.datas.length>0) {
 
-                        tag = '<option  selected disabled value="non" >二级标签</option>';
+                        tag = '<option hidden selected disabled value="" >二级标签</option>';
 
 
                         data = data.datas;

@@ -33,7 +33,7 @@
                         </select>
 
                         <select name="boostag_id" id="tag" class="form-control zj_select zj_sel" >
-                            <option value="non" disabled selected>请选择一级标签</option>
+                            <option value="" hidden disabled selected>请选择一级标签</option>
                             @foreach($boostags as $boostag)
                                 <option value="{{ $boostag->id }}">{{ $boostag->name }}</option>
                             @endforeach
