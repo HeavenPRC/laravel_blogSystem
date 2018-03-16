@@ -47,8 +47,8 @@
                     </div>
 
                     <div class="form-group">
-                        <select id="tag" class="form-control zj_select zj_sel" name='boostag_id'>
-                            <option value="non" disabled selected>请选择一级标签</option>
+                        <select id="tag" class="form-control zj_select zj_sel" name='boostag_id' required>
+                            <option value="" hidden disabled  {{ $topic->boostag_id ? '' : 'selected' }}>请选择一级标签</option>
                             @foreach($boostags as $boostag)
                                 <option value="{{ $boostag->id }}">{{ $boostag->name }}</option>
                             @endforeach
